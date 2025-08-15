@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+
+    <title>Document</title>
+    <style>
+
+        #message-container {
+            border: 1px solid;
+            min-height: 70vh;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+        #message-container br {
+            
+            display: block;
+            height: 12rem;
+        }
+
+
+        .messagediv {
+            align-self: flex-start;
+            max-width: 80%;
+            word-wrap: break-word; /*word-wrap (and its newer name overflow-wrap) tells the browser whether it’s allowed to break a word onto the next line if the word is too long to fit inside the element.*/
+            border: 1px solid;
+            border-radius: 1rem;
+            padding: 0.5rem;
+            background-color: bisque;
+        }
+
+        #message-container div:nth-of-type(2n) {
+
+            align-self: flex-end;
+            background-color:lightgreen;
+        }
+
+
+        
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script defer src="script.js"></script>
+</head>
+<body class="pico container">
+    <div id="message-container"></div>
+
+    <br>
+
+    <form id="form">
+  <fieldset role="group">
+    <input
+      type="text"
+      name="message"
+      id="message-input"
+      placeholder="Enter your message"
+    />
+    <input type="submit" id="send-button" value="Send" />
+  </fieldset>
+    <fieldset role="group">
+    <input
+      type="text"
+      name="message"
+      id="room-input"
+      placeholder="Enter room id"
+    />
+    <input type="button" id="room-button" value="Join" />
+  </fieldset>
+</form>
+    
+    
+</body>
+</html>

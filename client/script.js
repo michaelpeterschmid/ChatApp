@@ -4,9 +4,7 @@ const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
 
 
-
-const socket = io("http://localhost:3000");
-
+const socket = io("http://socket_demo_chatapp.onrender.com");
 // listening to event coming down from the server
 socket.on("connect", () => {
     displayMessage(`You connected with id: ${socket.id}`)
@@ -30,8 +28,6 @@ form.addEventListener("submit", event => {
     const message = messageInput.value;
     const room = roomInput.value;
     console.log(room);
-
-
     if(message === "" ) {
         return;
     }else{
@@ -44,11 +40,8 @@ form.addEventListener("submit", event => {
 })
 
 
-
-
 joinRoomButton.addEventListener("click", () => {
     const room = roomInput.value;
-
 
     //say to the server that we want to join to a specific room
     socket.emit("join-room", room, /*callback function at last to inform user about success*/ message => {

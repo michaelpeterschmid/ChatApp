@@ -1,7 +1,7 @@
 // server.js
 import http from "http";
 import express from "express";
-import { Server } from "socket.io";
+import { Server as SocketIOServer } from "socket.io";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -20,7 +20,12 @@ app.use(express.static(path.join(__dirname, "../client")));
 const httpServer = http.createServer(app);
 
 // Create WebSocket server on top of HTTP
-const io = new Server(httpServer);
+const io = new SocketIOServer(httpServer, {
+  cors: {
+    origin: "*",          // ✅ allow all origins
+    methods: ["GET", "POST"]
+  }
+});
 
 
 //runs every time a client connects to our server, and gives each one an id (it's room)

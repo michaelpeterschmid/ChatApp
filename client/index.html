@@ -18,18 +18,14 @@
             padding: 1rem;
             display: flex;
             flex-direction: column;
-
         }
 
-
-        #message-container br {
-            
+        #message-container br { 
             display: block;
             height: 12rem;
         }
 
-
-        .messagediv {
+        .receiver {
             align-self: flex-start;
             max-width: 80%;
             word-wrap: break-word; /*word-wrap (and its newer name overflow-wrap) tells the browser whether it’s allowed to break a word onto the next line if the word is too long to fit inside the element.*/
@@ -39,8 +35,12 @@
             background-color: bisque;
         }
 
-        #message-container div:nth-of-type(2n) {
-
+        .sender {
+            max-width: 80%;
+            word-wrap: break-word; /*word-wrap (and its newer name overflow-wrap) tells the browser whether it’s allowed to break a word onto the next line if the word is too long to fit inside the element.*/
+            border: 1px solid;
+            border-radius: 1rem;
+            padding: 0.5rem;
             align-self: flex-end;
             background-color:lightgreen;
         }
@@ -48,9 +48,9 @@
 
         
     </style>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
 
-    <script defer src="script.js"></script>
+    <script type="module" defer src="script.js"></script>
 </head>
 <body class="pico container">
     <div id="message-container"></div>

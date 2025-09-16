@@ -13,11 +13,8 @@ socket.on("connect", () => {
 })
 
 socket.on("receive-message", message => {
-    displayMessage(message);
+    displayMessage(message, "receive");
 })
-
-
-
 
 
 
@@ -38,7 +35,7 @@ form.addEventListener("submit", event => {
     if(message === "" ) {
         return;
     }else{
-        displayMessage(message);
+        displayMessage(message, "send");
 
         socket.emit("send-message", message, room);
         messageInput.value = ""; //clear out the input
@@ -55,15 +52,19 @@ joinRoomButton.addEventListener("click", () => {
 
     //say to the server that we want to join to a specific room
     socket.emit("join-room", room, /*callback function at last to inform user about success*/ message => {
-        displayMessage(message);
+        displayMessage(message, "send");
     })
 })
 
 
 
-function displayMessage(message){
+function displayMessage(message, verb){
     const div = document.createElement("div");
-    div.classList.add("messagediv");
+    if(verb==="receive"){
+        div.classList.add("receiver");
+    }else{
+        div.classList.add("sender")
+    }
     const br = document.createElement("br");
     div.textContent = message;
     document.getElementById("message-container").append(div, br);

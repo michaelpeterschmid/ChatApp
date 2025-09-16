@@ -55,7 +55,7 @@ io.on("connection", (socket) => {
 
 // use default port provided by render.com or start HTTP server with port 3000
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server läuft auf http://localhost:${PORT}`);
 });
 

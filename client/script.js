@@ -4,7 +4,7 @@ const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
 
 
-const socket = io("http://socket_demo_chatapp.onrender.com");
+const socket = io("http://socket-demo-chatapp.onrender.com");
 // listening to event coming down from the server
 socket.on("connect", () => {
     displayMessage(`You connected with id: ${socket.id}`)

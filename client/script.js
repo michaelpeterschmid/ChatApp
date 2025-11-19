@@ -3,8 +3,7 @@ const messageInput = document.getElementById("message-input");
 const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
 
-
-const socket = io("https://socket-demo-chatapp.onrender.com");
+const socket = io();
 // listening to event coming down from the server
 socket.on("connect", () => {
     displayMessage(`You connected with id: ${socket.id}`)
@@ -14,6 +13,14 @@ socket.on("receive-message", message => {
     displayMessage(message, "receive");
 })
 
+socket.on("update-number-of-global-online-users", (nbOfAllUsers) => {
+    document.getElementById("number-of-users-overall").textContent = `${nbOfAllUsers}`
+})
+
+
+socket.on("update-number-of-room-online-users", (nbOfAllUsers) => {
+    document.getElementById("number-of-users-in-room").textContent = `${nbOfAllUsers}`
+})
 
 
 form.addEventListener("submit", event => {

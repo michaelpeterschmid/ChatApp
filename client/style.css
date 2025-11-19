@@ -1,0 +1,48 @@
+/*Reset*/
+*, *::before, *::after { box-sizing: border-box;}
+* {margin: 0;}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {font: inherit;}
+
+p, h1, h2, h3, h4, h5, h6 {overflow-wrap: break-word;}
+
+p { text-wrap: pretty;}
+h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
+
+#message-container {
+    border: 1px solid;
+    min-height: 70vh;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+#message-container br { 
+    display: block;
+    height: 12rem;
+}
+.receiver {
+    align-self: flex-start;
+    max-width: 80%;
+    word-wrap: break-word; /*word-wrap (and its newer name overflow-wrap) tells the browser whether it’s allowed to break a word onto the next line if the word is too long to fit inside the element.*/
+    border: 1px solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: bisque;
+}
+.sender {
+    max-width: 80%;
+    word-wrap: break-word; /*word-wrap (and its newer name overflow-wrap) tells the browser whether it’s allowed to break a word onto the next line if the word is too long to fit inside the element.*/
+    border: 1px solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    align-self: flex-end;
+    background-color:lightgreen;
+}

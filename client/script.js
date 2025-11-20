@@ -43,7 +43,7 @@ form.addEventListener("submit", (event) => {
   if (message === "") {
     return;
   } else {
-    displayMessage(message, "send");
+    displayMessage(`${userName}: ${message}`, "send");
 
     socket.emit("send-message", `${userName}: ${message}`, room);
     messageInput.value = ""; //clear out the input

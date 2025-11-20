@@ -1,7 +1,10 @@
 const joinRoomButton = document.getElementById("room-button");
+const setUserNameButton = document.getElementById("name-button");
+const nameInput = document.getElementById("name-input");
 const messageInput = document.getElementById("message-input");
 const roomInput = document.getElementById("room-input");
 const form = document.getElementById("form");
+let userName = "Anonym";
 
 const socket = io("https://socket-demo-chatapp.onrender.com");
 // listening to event coming down from the server
@@ -42,13 +45,14 @@ form.addEventListener("submit", (event) => {
   } else {
     displayMessage(message, "send");
 
-    socket.emit("send-message", message, room);
+    socket.emit("send-message", `${userName}: ${message}`, room);
     messageInput.value = ""; //clear out the input
   }
 });
 
 joinRoomButton.addEventListener("click", () => {
   const room = roomInput.value;
+  if (room === "") return;
 
   //say to the server that we want to join to a specific room
   socket.emit(
@@ -58,6 +62,11 @@ joinRoomButton.addEventListener("click", () => {
       displayMessage(message, "send");
     }
   );
+});
+
+setUserNameButton.addEventListener("click", () => {
+  if (nameInput.value === "") return;
+  userName = nameInput.value;
 });
 
 function displayMessage(message, verb) {
